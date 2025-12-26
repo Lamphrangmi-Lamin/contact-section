@@ -29,10 +29,55 @@
   </head>
   <body>
     <!-- Add your site or application content here -->
-    <h1 class="text-5xl text-center font-semibold pt-20">
-      Hello world! Write your content here.
-    </h1>
+    <main class="bg-gradient-to-br from-[#F9FAFB] to-[#D2D6DB] h-screen overflow-auto">
+      <section class="bg-white px-3 py-12 m-4 h-full">
+        <!-- Left section -->
+        <div class="">
+          <h2>Talk to our team</h2>
+          <p>
+            We're committed to delivering the support you require to make your experience as smooth as possible.
+          </p>
 
+          <!-- Team info -->
+           <div class="">
+            <div class="">
+              <i class="ri-building-line"></i>
+              <span>123 Maple Street, Springfield, IL, USA</span>
+            </div>
+            <div class="">
+              <i class="ri-phone-line"></i>
+              <span>+1 (650) 555-0198</span>
+            </div>
+            <div class="">
+              <i class="ri-mail-line"></i>
+              <span>hello@abstractly.com</span>
+            </div>
+           </div>
+        </div>
+        
+        <!-- Right Section -->
+         <div class="">
+           <form action="#" method="#">
+            <div class="">
+              <label for="name-input">Name</label>
+              <input required autocomplete="on" id="name-input" name="userName" type="text">
+            </div>
+
+            <div class="">
+              <label for="email-input">Email</label>
+              <input required autocomplete="on" id="email-input" name="userEmail" type="email">
+            </div>
+
+            <div class="">
+              <label for="message-input">Message</label>
+              <textarea aria-describedby="message-input" required autocomplete="on" name="userMessage" id="message-input"></textarea>
+              <div class="">0/500</div>
+              <button>Submit</button>
+            </div>
+           </form>
+         </div>
+      </section>
+    </main>
     <!-- Talk to our team
       We're committed to delivering the support you require to make your experience as smooth as possible.
       123 Maple Street, Springfield, IL, USA
@@ -57,7 +102,7 @@
         >GreatFrontEnd Projects</a
       >. Built by
       <a href="https://www.greatfrontend.com/u/your_username" target="_blank"
-        >Your Name</a
+        >Lamphrangmi</a
       >.
     </div>
     <script src="js/index.js"></script>
