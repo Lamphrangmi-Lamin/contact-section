@@ -31,11 +31,14 @@
     <!-- Add your site or application content here -->
     <main class="bg-gradient-to-br from-[#F9FAFB] to-[#D2D6DB] h-screen overflow-auto">
       <section class="bg-white rounded px-3 py-12 m-4 h-full
-      grid grid-cols-4 gap-x-4 auto-rows-min gap-y-12">
+      grid grid-cols-4 gap-x-4 auto-rows-min gap-y-12
+      md:grid-cols-6 md:gap-x-8 md:gap-y-16 md:py-[83px]">
         <!-- Left section -->
-        <div class="col-span-4">
-          <h2 class="text-4xl text-neutral-900 font-semibold mb-5">Talk to our team</h2>
-          <p class="text-lg text-neutral-600 mb-10">
+        <div class="col-span-4 md:col-span-6">
+          <h2 class="text-4xl text-neutral-900 font-semibold mb-5
+          md:text-5xl">Talk to our team</h2>
+          <p class="text-lg text-neutral-600 mb-10
+          md:text-xl md:mb-12">
             We're committed to delivering the support you require to make your experience as smooth as possible.
           </p>
 
@@ -65,16 +68,18 @@
         </div>
         
         <!-- Right Section -->
-         <div class="col-span-4 outline outline-neutral-200 outline-1 rounded-lg p-4 shadow-lg">
-           <form action="#" method="#" class="grid grid-cols-2 gap-y-6">
-            <div class="col-span-2">
+         <div class="col-span-4 outline outline-neutral-200 outline-1 rounded-lg p-4 shadow-lg
+         md:col-span-6 md:p-8">
+           <form action="#" method="#" class="grid grid-cols-2 gap-y-6
+           md:gap-x-8">
+            <div class="col-span-2 md:col-span-1">
               <label class="text-sm font-medium text-neutral-700 block mb-1.5" for="name-input">Name</label>
               <input placeholder="Your name" required autocomplete="on" id="name-input" name="userName" type="text"
               class="placeholder:text-sm placeholder:text-neutral-500
               px-3.5 py-2.5 w-full rounded border border-neutral-200 bg-neutral-50">
             </div>
 
-            <div class="col-span-2">
+            <div class="col-span-2 md:col-span-1">
               <label class="text-sm font-medium text-neutral-700 block mb-1.5" for="email-input">Email</label>
               <input placeholder="example@example.com" required autocomplete="on" id="email-input" name="userEmail" type="email"
               class="placeholder:text-sm placeholder:text-neutral-500
