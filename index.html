@@ -33,24 +33,24 @@
       <section class="bg-white px-3 py-12 m-4 h-full">
         <!-- Left section -->
         <div class="">
-          <h2>Talk to our team</h2>
-          <p>
+          <h2 class="text-4xl text-neutral-900 font-semibold">Talk to our team</h2>
+          <p class="text-lg text-neutral-600">
             We're committed to delivering the support you require to make your experience as smooth as possible.
           </p>
 
           <!-- Team info -->
            <div class="">
             <div class="">
-              <i class="ri-building-line"></i>
-              <span>123 Maple Street, Springfield, IL, USA</span>
+              <i class="ri-building-line text-2xl text-indigo-500"></i>
+              <span class="font-medium text-neutral-600">123 Maple Street, Springfield, IL, USA</span>
             </div>
             <div class="">
-              <i class="ri-phone-line"></i>
-              <span>+1 (650) 555-0198</span>
+              <i class="ri-phone-line text-2xl text-indigo-500"></i>
+              <span class="font-medium text-neutral-600">+1 (650) 555-0198</span>
             </div>
             <div class="">
-              <i class="ri-mail-line"></i>
-              <span>hello@abstractly.com</span>
+              <i class="ri-mail-line text-2xl text-indigo-500"></i>
+              <span class="font-medium text-neutral-600">hello@abstractly.com</span>
             </div>
            </div>
         </div>
@@ -59,20 +59,23 @@
          <div class="">
            <form action="#" method="#">
             <div class="">
-              <label for="name-input">Name</label>
-              <input required autocomplete="on" id="name-input" name="userName" type="text">
+              <label class="text-sm font-medium text-neutral-700" for="name-input">Name</label>
+              <input placeholder="Your name" required autocomplete="on" id="name-input" name="userName" type="text"
+              class="placeholder:text-sm placeholder:text-neutral-500">
             </div>
 
             <div class="">
-              <label for="email-input">Email</label>
-              <input required autocomplete="on" id="email-input" name="userEmail" type="email">
+              <label class="text-sm font-medium text-neutral-700" for="email-input">Email</label>
+              <input placeholder="example@example.com" required autocomplete="on" id="email-input" name="userEmail" type="email"
+              class="placeholder:text-sm placeholder:text-neutral-500">
             </div>
 
             <div class="">
-              <label for="message-input">Message</label>
-              <textarea aria-describedby="message-input" required autocomplete="on" name="userMessage" id="message-input"></textarea>
-              <div class="">0/500</div>
-              <button>Submit</button>
+              <label class="text-sm font-medium text-neutral-700" for="message-input">Message</label>
+              <textarea placeholder="Write your message..." aria-describedby="message-input" required autocomplete="on" name="userMessage" id="message-input"
+              class="placeholder:text-sm placeholder:text-neutral-500"></textarea>
+              <div class="text-sm text-neutral-500">0/500</div>
+              <button class="text-white bg-indigo-700">Submit</button>
             </div>
            </form>
          </div>
