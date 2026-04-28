@@ -20,21 +20,27 @@ contactForm.addEventListener("submit", (e) => {
     if (!username.value) {
         if (!firstErrorField) firstErrorField = username;
         isValid = false;
-        showError(username);
+        showError(username, "Name is required.");
     }
 
     // Email address validation
     if (!email.value) {
         if (!firstErrorField) firstErrorField = email;
         isValid = false;
-        showError(email);
+        showError(email, "Email is required.");
+    }
+
+    if (email.value && !isEmailValid(email.value)) {
+        if (!firstErrorField) firstErrorField = email;
+        isValid = false;
+        showError(email, "Please enter a valid email address.");
     }
 
     // Message validation
     if (!message.value) {
         if (!firstErrorField) firstErrorField = message;
         isValid = false;
-        showError(message);
+        showError(message, "Message is required");
     }
     if (!isValid) {
         firstErrorField.focus();
@@ -42,8 +48,16 @@ contactForm.addEventListener("submit", (e) => {
     };
 })
 
-function showError(input) {
+function showError(input, message) {
     const field = input.parentElement;
     const error = field.querySelector(".error");
+    error.innerText = message;
     error.classList.remove("hidden");
 }
+
+function isEmailValid(email) {
+    const regex = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+    return regex.test(email);
+}
+
+// console.log(isEmailValid('test@gcom.c'))
