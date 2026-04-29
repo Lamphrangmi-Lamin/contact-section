@@ -5,6 +5,11 @@ const message = contactForm.elements["message"];
 const usernameError = document.getElementById("usernameError");
 const emailError = document.getElementById("emailError");
 const messageError = document.getElementById("messageError");
+const minCharCount = document.getElementById("minCharCount");
+const maxCharCount = document.getElementById("maxCharCount");
+
+let charCount = message.value.length;
+minCharCount.innerText = charCount;
 
 const formData = new FormData(contactForm);
 console.log(formData);
@@ -52,7 +57,6 @@ contactForm.addEventListener("submit", (e) => {
   }
 });
 
-
 // EventListeners
 username.addEventListener("input", (e) => {
   if (e.target.value) {
@@ -74,8 +78,8 @@ message.addEventListener("input", (e) => {
   if (e.target.value) {
     removeErrorStyle(message);
     showError(message, "");
-    return;
   }
+  updateCharCount();
 });
 
 // Helper functions
@@ -110,4 +114,9 @@ function removeErrorStyle(inputField) {
   inputField.classList.remove("focus:outline-red-50");
   inputField.classList.add("focus:outline-indigo-200");
   return;
+}
+
+function updateCharCount() {
+  charCount = message.value.length;
+  minCharCount.innerText = charCount;
 }
