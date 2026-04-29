@@ -7,6 +7,12 @@ const emailError = document.getElementById("emailError");
 const messageError = document.getElementById("messageError");
 const minCharCount = document.getElementById("minCharCount");
 const maxCharCount = document.getElementById("maxCharCount");
+const successState = document.getElementById("success-state");
+const successBtn = document.getElementById("successBtn");
+const successMsg = document.getElementById("successMsg");
+const toaster = document.getElementById("toaster");
+const toastBadge = document.getElementById("toastBadge");
+const toastMessage = document.getElementById("toastMessage");
 
 // Initial rendering of character count
 let charCount = message.value.length;
@@ -17,9 +23,6 @@ contactForm.addEventListener("submit", (e) => {
 
   const formData = new FormData(contactForm);
   const payload = Object.fromEntries(formData.entries());
-  console.log(payload);
-
-  sendRequest(payload);
 
   let isValid = true;
   let firstErrorField = null;
@@ -59,7 +62,7 @@ contactForm.addEventListener("submit", (e) => {
     return;
   }
 
-  //
+  sendRequest(payload);
 });
 
 // EventListeners
@@ -85,6 +88,11 @@ message.addEventListener("input", (e) => {
     showError(message, "");
   }
   updateCharCount();
+});
+
+successBtn.addEventListener("click", () => {
+  contactForm.classList.remove("hidden");
+  successState.classList.add("hidden");
 });
 
 // Helper functions
@@ -126,9 +134,37 @@ function updateCharCount() {
   minCharCount.innerText = charCount;
 }
 
+function resetForm() {
+  contactForm.reset();
+  updateCharCount();
+}
+
+function showSuccessMsg(container, message) {
+  container.innerText = message;
+}
+
+function showErrorToast(message) {
+  toaster.classList.remove("hidden");
+
+  toaster.classList.remove("bg-green-50");
+  toaster.classList.add("bg-red-50");
+
+  toastBadge.classList.remove("text-green-700");
+  toastBadge.classList.add("text-red-800");
+
+  toastMessage.classList.remove("text-green-700");
+  toastMessage.classList.add("text-red-600");
+
+  toastBadge.innerText = "Error";
+  toastMessage.innerText =
+    message ||
+    "Failed to submit. Please ensure your details are correct or try again later.";
+}
+
 async function sendRequest(data) {
   const endpoint =
     "https://www.greatfrontend.com/api/projects/challenges/contact";
+
   try {
     let response = await fetch(endpoint, {
       method: "POST",
@@ -138,11 +174,22 @@ async function sendRequest(data) {
       }),
     });
 
+    // Handle successful API response
     if (response.ok) {
       const result = await response.json();
-      console.log(result);
+      showSuccessMsg(successMsg, result.message);
+      resetForm();
+      successState.classList.remove("hidden");
+      contactForm.classList.add("hidden");
+      return;
+    }
+
+    // Handle failed API response
+    if (!response.ok) {
+      showErrorToast();
     }
   } catch (error) {
-    throw new Error("Message: ", error);
+    console.log(error);
+    showErrorToast();
   }
 }
