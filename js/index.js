@@ -1,5 +1,5 @@
 const contactForm = document.getElementById("contactForm");
-const username = contactForm.elements["username"];
+const username = contactForm.elements["name"];
 const email = contactForm.elements["email"];
 const message = contactForm.elements["message"];
 const usernameError = document.getElementById("usernameError");
@@ -8,15 +8,18 @@ const messageError = document.getElementById("messageError");
 const minCharCount = document.getElementById("minCharCount");
 const maxCharCount = document.getElementById("maxCharCount");
 
+// Initial rendering of character count
 let charCount = message.value.length;
 minCharCount.innerText = charCount;
 
-const formData = new FormData(contactForm);
-console.log(formData);
-// console.log(contactForm.elements['username']);
-
 contactForm.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  const formData = new FormData(contactForm);
+  const payload = Object.fromEntries(formData.entries());
+  console.log(payload);
+
+  sendRequest(payload);
 
   let isValid = true;
   let firstErrorField = null;
@@ -55,6 +58,8 @@ contactForm.addEventListener("submit", (e) => {
     firstErrorField.focus();
     return;
   }
+
+  //
 });
 
 // EventListeners
@@ -119,4 +124,25 @@ function removeErrorStyle(inputField) {
 function updateCharCount() {
   charCount = message.value.length;
   minCharCount.innerText = charCount;
+}
+
+async function sendRequest(data) {
+  const endpoint =
+    "https://www.greatfrontend.com/api/projects/challenges/contact";
+  try {
+    let response = await fetch(endpoint, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: new Headers({
+        "Content-Type": "application/json; charset=UTF-8",
+      }),
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      console.log(result);
+    }
+  } catch (error) {
+    throw new Error("Message: ", error);
+  }
 }
